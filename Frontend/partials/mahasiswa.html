@@ -1,0 +1,37 @@
+<h4 class="blog-post-title">Manajemen Data Mahasiswa</h4>
+<hr/>
+<button type="button" class="btn btn-danger fa fa-plus" ng-click="open(mahasiswa);">&nbsp;Tambah Data Mahasiswa</button>
+
+<div class="table-responsive">
+<div class="panel panel-primary">
+  <div class="panel-heading">Daftar Mahasiswa
+      <div class="sw-search" >
+            <div class="nav-search" id="nav-search">
+                    Filter: <span class="input-icon">
+                        <input placeholder="Filter products list ..." class="nav-search-input" ng-model="filterProduct" ng-change="resetLimit();"  autocomplete="off" type="text" style="width:300px;" focus>
+                        <i class="search-icon fa fa-search nav-search-icon"></i>
+                    </span>
+            </div>
+        </div>
+    </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+    <tr ng-show="mahasiswas.length==0"><td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;Tidak ada data mahasiswa</td></tr>
+    <tr ng-hide="mahasiswas.length>-1"><td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Memuat...</td></tr>
+    
+    <tr><th ng-repeat="c in columns">{{c.text}}</th></tr>
+
+    <tr ng-repeat="c in mahasiswas | filter:filterProduct | orderBy:'-mahasiswa_nim'" id="{{c.mahasiswa_nim}}" animate-on-change='c.mahasiswa_nim + c.mahasiswa_nama + c.mahasiswa_prodi_jurusan + c.mahasiswa_angkatan + c.mahasiswa_email' ng-animate=" 'animate'">
+        <td>{{c.mahasiswa_nim}}</td><td>{{c.mahasiswa_nama}}</td><td>{{c.mahasiswa_prodi_jurusan}}</td><td>{{c.mahasiswa_angkatan}}</td><td>{{c.mahasiswa_email}}</td>
+        <td style="width:100px">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default fa fa-edit" ng-click="open(c);"></button>
+              <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deleteMahasiswa(c);"></button>
+            </div>
+        </td>
+    </tr>
+    </table>
+</div>
+</div>
+</div>
+              

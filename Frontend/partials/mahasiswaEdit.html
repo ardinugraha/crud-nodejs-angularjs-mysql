@@ -1,0 +1,45 @@
+    <button type="button" class="close" ng-click="cancel();">
+        <i class="fa fa-times-circle-o" style="margin:10px;color:blue;"></i>
+    </button>
+    <div class="modal-header">
+        <h3 class="modal-title" ng-show="mahasiswaCtrl.showEdit">Edit Data Mahasiswa [ID: {{mahasiswa.mahasiswa_nim}}]</h3>
+        <h3 class="modal-title" ng-show="mahasiswaCtrl.showAdd">Tambah Data Mahasiswa</h3>
+    </div>
+    <div class="modal-body">
+        <form name="product_form" class="form-horizontal" role="form" novalidate>
+            <form-element label="NIM" mod="mahasiswa" ng-show="mahasiswaCtrl.showAdd">
+                <input type="text" class="form-control" name="nim" placeholder="NIM" ng-model="mahasiswa.mahasiswa_nim" ng-disabled="product.id" focus/>
+            </form-element>
+            <form-element label="NAME" mod="mahasiswa">
+                <input type="text" class="form-control" name="name" placeholder="NAME" ng-model="mahasiswa.mahasiswa_nama" ng-disabled="product.id" focus/>
+            </form-element>
+            <form-element label="Prodi/Jurusan" mod="mahasiswa">
+            <input type="text" class="form-control" name="prodi/jurusan" placeholder="PRODI/JURUSAN" ng-model="mahasiswa.mahasiswa_prodi_jurusan" ng-disabled="product.id" focus/>
+            <!--<textarea class="form-control" name="description" placeholder="PRODI/JURUSAN" ng-model="mahasiswa.mahasiswa_prodi_jurusan">{{mahasiswa.mahasiswa_prodi_jurusan}}</textarea>-->
+            </form-element>
+            <form-element label="Angkatan" mod="mahasiswa">
+                <input type="text" name="angkatan" class="form-control" placeholder="ANGKATAN" ng-model="mahasiswa.mahasiswa_angkatan"  only-numbers/>
+                <small class="errorMessage" ng-show="product_form.price.$dirty && product_form.price.$invalid"> Enter the price.</small>
+            </form-element>
+            <form-element label="Email" mod="mahasiswa">
+                <input type="text" class="form-control" name="email" placeholder="EMAIL" ng-model="mahasiswa.mahasiswa_email"/>
+            </form-element>
+
+            <div class="space"></div>
+            <div class="space-4"></div>
+            <div class="modal-footer">
+                <form-element label="">
+                    <div class="text-right">
+                        <a class="btn btn-warning" ng-click="cancel()"><i class="ace-icon fa fa-reply"></i> Cancel</a>
+                        <button ng-click="saveMahasiswa(mahasiswa,mahasiswaCtrl.showEdit);"
+                                ng-disabled="product_form.$invalid || enableUpdate"
+                                class="btn btn-sm btn-primary"
+                                type="submit">
+                            <i class="ace-icon fa fa-check"></i> {{buttonText}}
+                        </button>
+                    </div>
+                </form-element>
+            </div>
+        </form>
+    </div>
+
