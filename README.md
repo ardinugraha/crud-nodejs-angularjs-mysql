@@ -14,6 +14,9 @@ Make sure you running your db At port 3306, or you need to configure the databas
 
 # Installing Backend
 if your installing db method are different, you need to configure the db at '\Backend\lib\config\mysql_config.js'. And also this server will run on port 9000 on default.
+to start server with
+
+npm start
 
 # Installing FrontEnd
 You need XAMPP just create a new directory for your client at htdocs folder at xampp, copy all frontend files to it.
